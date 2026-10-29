@@ -29,8 +29,8 @@
     if (!reduce) d.classList.add('con-intro');
   })();
 </script>
-<link rel="stylesheet" href="kit/kit.css?v=3">
-<link rel="stylesheet" href="css/style.css?v=5">
+<link rel="stylesheet" href="kit/kit.css?v=4">
+<link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body>
 
@@ -84,7 +84,10 @@
     <a href="#catas">Catas</a>
     <a href="#esquina">Cómo llegar</a>
   </nav>
-  <p class="menu__pie">Baigorria 2401 · Agronomía<br>Todos los días hasta las 20:00hs</p>
+  <div class="menu__pie">
+    <a class="btn btn--linea menu__panel" href="admin/" target="_blank" rel="noopener">Probá el panel del dueño →</a>
+    <p>Baigorria 2401 · Agronomía<br>Todos los días hasta las 20:00hs</p>
+  </div>
 </div>
 
 <main>
@@ -218,9 +221,9 @@
         <path d="M92 322h136" stroke="#F5F1EA" stroke-width="8" stroke-linecap="round"/>
         <rect x="128" y="352" width="64" height="24" rx="12" fill="#F5F1EA"/><text x="160" y="369" text-anchor="middle" class="bolsa__t">250 g</text>
       </svg>
-      <button type="button" class="tolva__giro" id="manivelaBtn" aria-label="Girar la manivela para moler un cuarto">
+      <button type="button" class="tolva__giro" id="manivelaBtn" aria-label="Mantené apretado para moler un cuarto">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>
-        <span>Girá la manivela</span>
+        <span class="solo-celu">Mantené apretado para moler</span><span class="solo-desk">Mantené apretado o girá la manivela</span>
       </button>
     </div>
     <div class="grano__txt">
@@ -344,6 +347,7 @@
         <p>Lun a vie 8:00hs a 20:00hs · sáb 9:00hs a 20:00hs · dom 10:00hs a 20:00hs</p>
         <p><a href="https://wa.me/5491136692192" target="_blank" rel="noopener">WhatsApp 11 3669-2192</a></p>
         <p><a href="https://www.instagram.com/humacafeagronomia/" target="_blank" rel="noopener">Instagram @humacafeagronomia</a></p>
+        <p><a class="pie__panel" href="admin/" target="_blank" rel="noopener">Probá el panel del dueño →</a></p>
       </div>
     </div>
     <a class="pie__makia" href="https://www.instagram.com/makia.cafe/" target="_blank" rel="noopener">
@@ -354,9 +358,9 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=4" defer></script>
+<script src="js/main.js?v=7" defer></script>
 <script type="module">
-  import { initKit } from './kit/kit.js?v=3';
+  import { initKit } from './kit/kit.js?v=4';
   const BOLSA = '<svg viewBox="0 0 24 24"><path d="M5 8h14l-1.3 11.2a2 2 0 0 1-2 1.8H8.3a2 2 0 0 1-2-1.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>';
   try {
     const kit = await initKit({ config: 'cliente.json', imagenes: { lqip: 'img/lqip.json' }, carta: {}, carrito: { label: 'Para llevar', icono: BOLSA }, badge: true });

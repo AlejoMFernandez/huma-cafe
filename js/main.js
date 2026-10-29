@@ -142,6 +142,27 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // el botón flotante del carrito (celu) se corre si quedó encima de un botón o un “+”
+  var fabT = 0;
+  function revisarFab() {
+    var fab = document.querySelector('.kit-fab'); if (!fab || window.innerWidth >= 1100) return;
+    var tapa = false;
+    if (getComputedStyle(fab).display !== 'none') {
+      var r = fab.getBoundingClientRect();
+      if (r.width) {
+        var pts = [];
+        [.06, .5, .94].forEach(function (fx) { [.15, .5, .85].forEach(function (fy) { pts.push([r.left + r.width * fx, r.top + r.height * fy]); }); });
+        tapa = pts.some(function (pt) {
+          return document.elementsFromPoint(pt[0], pt[1]).some(function (e) { return !fab.contains(e) && e.closest && e.closest('main button, main a, main [data-kit-qty], main input'); });
+        });
+      }
+    }
+    fab.classList.toggle('is-corrido', tapa);
+  }
+  window.addEventListener('scroll', function () { cancelAnimationFrame(fabT); fabT = requestAnimationFrame(revisarFab); }, { passive: true });
+  document.addEventListener('kit:carrito', function () { setTimeout(revisarFab, 60); setTimeout(revisarFab, 700); });
+  setInterval(function () { if (!document.hidden) revisarFab(); }, 800);
+
   var navLinks = $$('.hdr__nav a');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
@@ -328,7 +349,7 @@
     if (!REDUCE) requestAnimationFrame(function () { setTimeout(function () { $$('.plato .taza', panel).forEach(function (t, i) { setTimeout(function () { t.classList.add('is-llena'); }, i * 70); }); }, 250); });
     if (REDUCE) $$('.plato .taza', panel).forEach(function (t) { t.classList.add('is-llena'); });
     var on = tabsEl.querySelector('.is-on');
-    if (on) tabsEl.scrollTo({ left: on.offsetLeft - tabsEl.clientWidth / 2 + on.offsetWidth / 2, behavior: enfocar ? 'smooth' : 'auto' });
+    if (on) { var tr = tabsEl.getBoundingClientRect(), orr = on.getBoundingClientRect(); tabsEl.scrollTo({ left: tabsEl.scrollLeft + (orr.left - tr.left) - tr.width / 2 + orr.width / 2, behavior: enfocar && !REDUCE ? 'smooth' : 'auto' }); }
   }
   function ponerFoto(p, c) {
     if (!fotoEl) return;
@@ -438,24 +459,34 @@
       if (k < 1) requestAnimationFrame(paso); else { girar.anim = false; if (!girar.hecho && lleno > .9) girar(720 * (1 - lleno) + 1); }
     })(t0);
   });
-  // arrastrar la manivela (dedo o mouse): el ángulo alrededor del eje
+  // la manivela: se arrastra (mouse o dedo) o se muele manteniendo apretado el botón
   (function () {
-    var svg = $('.tolva'), activo = false, ultimo = 0;
+    var svg = $('.tolva'), activo = false, ultimo = 0, sosteniendo = false, rafH = 0;
     function angulo(e) {
       var r = svg.getBoundingClientRect(), cx = r.left + r.width * (196 / 320), cy = r.top + r.height * (212 / 460);
       return Math.atan2(e.clientY - cy, e.clientX - cx) * 180 / Math.PI;
     }
-    function down(e) { if (!tolvaP) return; activo = true; ultimo = angulo(e); giroBtn.classList.add('is-drag'); try { e.target.setPointerCapture(e.pointerId); } catch (x) {} e.preventDefault(); }
-    function move(e) {
+    manivela.addEventListener('pointerdown', function (e) { if (!tolvaP) return; activo = true; ultimo = angulo(e); try { manivela.setPointerCapture(e.pointerId); } catch (x) {} e.preventDefault(); });
+    manivela.addEventListener('pointermove', function (e) {
       if (!activo) return;
       var a = angulo(e), d = a - ultimo; if (d > 180) d -= 360; if (d < -180) d += 360; ultimo = a;
       girar(d);
+    });
+    ['pointerup', 'pointercancel'].forEach(function (ev) { manivela.addEventListener(ev, function () { activo = false; }); });
+    // mantener apretado: la manivela gira sola mientras dure el toque (dos vueltas = un cuarto)
+    function paso() { if (!sosteniendo) return; girar(REDUCE ? 720 : 11); if (lleno < .995) rafH = requestAnimationFrame(paso); else soltar(); }
+    function apretar(e) {
+      if (!tolvaP || girar.anim) return; e.preventDefault();
+      if (lleno >= .995) setLleno(0);
+      sosteniendo = true; giroBtn.classList.add('is-drag'); try { giroBtn.setPointerCapture(e.pointerId); } catch (x) {}
+      rafH = requestAnimationFrame(paso);
     }
-    function up() { activo = false; giroBtn.classList.remove('is-drag'); }
-    [manivela, giroBtn].forEach(function (el) { el.addEventListener('pointerdown', down); el.addEventListener('pointermove', move); el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up); });
-    // con el botón y el teclado: Enter/espacio = un cuarto de vuelta
-    giroBtn.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); girar(90); } });
-    giroBtn.addEventListener('click', function (e) { if (e.detail === 0) return; if (!activo && Math.abs(lleno) < .01) girar(120); });
+    function soltar() { sosteniendo = false; cancelAnimationFrame(rafH); giroBtn.classList.remove('is-drag'); }
+    giroBtn.addEventListener('pointerdown', apretar);
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) { giroBtn.addEventListener(ev, soltar); });
+    giroBtn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    // teclado: Enter/espacio = media vuelta
+    giroBtn.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (tolvaP) girar(180); } });
   })();
   $('#molienda').addEventListener('click', function (e) {
     var b = e.target.closest('[data-mol]'); if (!b) return;
@@ -559,6 +590,9 @@
     if (!K || !K.carrito) return;
     var n = K.carrito.lineas.reduce(function (s, l) { return s + (l.cant || 0); }, 0), b = $('[data-n]');
     b.hidden = !n; if (String(n) !== b.textContent) { b.textContent = n; b.classList.remove('is-pop'); void b.offsetWidth; b.classList.add('is-pop'); }
+    // en el celu el botón de la barra pasa de "Pedir" (va a la carta) a "Tu pedido · n" (abre el carrito)
+    var hp = $('.hdr__pedir');
+    if (hp) { hp.textContent = n ? 'Tu pedido · ' + n : 'Pedir'; hp.classList.toggle('is-lleno', !!n); if (n) hp.setAttribute('data-kit-open', 'carrito'); else hp.removeAttribute('data-kit-open'); }
   }
   document.addEventListener('kit:carrito', pintarContador);
   $$('[data-ir-pedir]').forEach(function (a) { a.addEventListener('click', function () { if (K && K.carrito && K.carrito.lineas.length) { /* ya tiene algo: que lo vea */ } }); });
