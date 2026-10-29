@@ -1,0 +1,587 @@
+{
+ "$schema": "./cliente.schema.json",
+ "id": "huma-cafe",
+ "nombre": "Huma café",
+ "instagram": "humacafeagronomia",
+ "pais": "AR",
+ "idioma": "es",
+ "modo": "demo",
+ "whatsapp": "5491136692192",
+ "prefijoPedido": "H",
+ "supabase": {
+  "url": "",
+  "anonKey": ""
+ },
+ "marca": {
+  "logo": "img/logo.svg",
+  "logoPanel": "img/logo-claro.svg",
+  "favicon": "img/favicon.svg",
+  "colores": {
+   "fondo": "#F5F1EA",
+   "superficie": "#FFFFFF",
+   "texto": "#141414",
+   "primario": "#141414",
+   "sobrePrimario": "#F5F1EA",
+   "acento": "#2E6F6B",
+   "sobreAcento": "#FFFFFF",
+   "borde": "#D9D1C6",
+   "suave": "#5E5852"
+  },
+  "fuentes": {
+   "titulos": "'Archivo Expandida', 'Archivo', system-ui, sans-serif",
+   "texto": "'Jost', system-ui, sans-serif",
+   "googleFonts": ""
+  },
+  "estilo": {
+   "forma": "pildora",
+   "sombra": "suave",
+   "borde": "1.5px",
+   "mayusculas": false
+  }
+ },
+ "modulos": {
+  "carta": true,
+  "carrito": true,
+  "reservas": true,
+  "admin": true
+ },
+ "horarios": {
+  "lun": [
+   [
+    "08:00",
+    "20:00"
+   ]
+  ],
+  "mar": [
+   [
+    "08:00",
+    "20:00"
+   ]
+  ],
+  "mie": [
+   [
+    "08:00",
+    "20:00"
+   ]
+  ],
+  "jue": [
+   [
+    "08:00",
+    "20:00"
+   ]
+  ],
+  "vie": [
+   [
+    "08:00",
+    "20:00"
+   ]
+  ],
+  "sab": [
+   [
+    "09:00",
+    "20:00"
+   ]
+  ],
+  "dom": [
+   [
+    "10:00",
+    "20:00"
+   ]
+  ]
+ },
+ "reservas": {
+  "maxPersonas": 6,
+  "anticipacionMin": 120,
+  "diasAdelante": 60,
+  "capacidad": 20,
+  "servicios": [
+   {
+    "id": "cata",
+    "nombre": "Cata de vinos",
+    "fechas": [
+     "2026-11-19",
+     "2026-12-10"
+    ],
+    "tandas": [
+     {
+      "nombre": "Cata de vinos",
+      "turnos": [
+       "20:30"
+      ],
+      "capacidad": 20
+     }
+    ]
+   }
+  ]
+ },
+ "pedidos": {
+  "salidas": [
+   "whatsapp",
+   "mercadopago"
+  ],
+  "tipos": [
+   "retiro"
+  ],
+  "minimo": 0,
+  "sinPrecio": "a_confirmar",
+  "encargo": {
+   "anticipacionHoras": 0,
+   "diasAdelante": 3,
+   "franjas": [
+    {
+     "id": "manana",
+     "nombre": "Mañana",
+     "desde": "08:00",
+     "hasta": "12:00"
+    },
+    {
+     "id": "mediodia",
+     "nombre": "Mediodía",
+     "desde": "12:00",
+     "hasta": "16:00"
+    },
+    {
+     "id": "tarde",
+     "nombre": "Tarde",
+     "desde": "16:00",
+     "hasta": "20:00"
+    }
+   ]
+  }
+ },
+ "pagos": {
+  "mercadopago": {
+   "endpoint": "https://kit-demos-amf.vercel.app/api/mp-preference",
+   "modo": "sandbox"
+  }
+ },
+ "textos": {
+  "tuPedido": "Para llevar",
+  "verPedido": "Para llevar",
+  "agregar": "Sumar",
+  "agregado": "Sumado",
+  "noDisponible": "Hoy no hay",
+  "carritoVacio": "Todavía no sumaste nada.",
+  "carritoVacioSub": "Elegí un café o algo rico de la carta.",
+  "notaPedido": "¿Algo más? (leche vegetal, sin azúcar…)",
+  "retiro": "Retiro en Baigorria 2401",
+  "paraCuando": "¿Cuándo pasás?",
+  "pedidoListo": "¡Pedido enviado!",
+  "seguir": "Seguir mirando la carta",
+  "reservarMesa": "Guardame un lugar",
+  "confirmarReserva": "Guardame el lugar",
+  "reservaLista": "¡Lugar guardado!",
+  "reservaListaSub": "{personas} · {dia} a las {hora}. Te confirmamos por WhatsApp.",
+  "comentario": "¿Alguna restricción o algo que tengamos que saber?",
+  "waReserva": "Hola Huma! Quiero sumarme a la cata para {personas} el {dia} a las {hora}. A nombre de {nombre}.",
+  "lleno": "Completo",
+  "quedan": "Quedan {n}",
+  "sinTurnos": "No hay catas para este día.",
+  "pedidoListoSub": "Tu código es {codigo}. Huma lo ve en su panel y te escribe por WhatsApp. Te esperamos en la esquina."
+ },
+ "carta": {
+  "categorias": [
+   {
+    "id": "cafeteria",
+    "nombre": "Cafetería",
+    "orden": 1
+   },
+   {
+    "id": "frios",
+    "nombre": "Fríos",
+    "orden": 2
+   },
+   {
+    "id": "otros",
+    "nombre": "Té, chocolate y más",
+    "orden": 3
+   },
+   {
+    "id": "desayunos",
+    "nombre": "Desayunos y meriendas",
+    "orden": 4
+   },
+   {
+    "id": "salado",
+    "nombre": "Tostones y sándwiches",
+    "orden": 5
+   },
+   {
+    "id": "ensaladas",
+    "nombre": "Ensaladas",
+    "orden": 6
+   },
+   {
+    "id": "dulces",
+    "nombre": "Dulces",
+    "orden": 7
+   },
+   {
+    "id": "grano",
+    "nombre": "Café en grano",
+    "orden": 8
+   }
+  ],
+  "productos": [
+   {
+    "id": "espresso",
+    "categoria": "cafeteria",
+    "nombre": "Espresso",
+    "descripcion": "Un espresso del café que está hoy en la tolva",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "doble",
+    "categoria": "cafeteria",
+    "nombre": "Doble espresso",
+    "descripcion": "Doble espresso",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "americano",
+    "categoria": "cafeteria",
+    "nombre": "Americano",
+    "descripcion": "Un espresso + agua",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "cafe-con-leche",
+    "categoria": "cafeteria",
+    "nombre": "Café con leche",
+    "descripcion": "Un espresso + leche emulsionada",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/cafe-con-leche-480.webp"
+   },
+   {
+    "id": "capuccino",
+    "categoria": "cafeteria",
+    "nombre": "Capuccino",
+    "descripcion": "Un espresso + leche emulsionada",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/capuccino-480.webp"
+   },
+   {
+    "id": "macchiato",
+    "categoria": "cafeteria",
+    "nombre": "Espresso macchiato",
+    "descripcion": "Un espresso + leche emulsionada",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "flat-white",
+    "categoria": "cafeteria",
+    "nombre": "Flat white",
+    "descripcion": "Doble espresso + leche emulsionada",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/flat-white-480.webp"
+   },
+   {
+    "id": "leche-almendras",
+    "categoria": "cafeteria",
+    "nombre": "Adicional leche de almendras",
+    "descripcion": "Para cualquier café con leche",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "leche-deslactosada",
+    "categoria": "cafeteria",
+    "nombre": "Adicional leche deslactosada",
+    "descripcion": "Para cualquier café con leche",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "ice-latte",
+    "categoria": "frios",
+    "nombre": "Ice latte",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/ice-latte-480.webp"
+   },
+   {
+    "id": "coffee-tonic",
+    "categoria": "frios",
+    "nombre": "Coffee tonic",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "limonada",
+    "categoria": "frios",
+    "nombre": "Limonada",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/limonada-480.webp"
+   },
+   {
+    "id": "te-saquito",
+    "categoria": "otros",
+    "nombre": "Té en saquito o té frío",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "te-hebras",
+    "categoria": "otros",
+    "nombre": "Té en hebras",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "chocolatada",
+    "categoria": "otros",
+    "nombre": "Chocolatada fría o caliente",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "submarino",
+    "categoria": "otros",
+    "nombre": "Submarino",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "promo-huma",
+    "categoria": "desayunos",
+    "nombre": "Promo Huma",
+    "descripcion": "2 infusiones, croissant relleno, scon de queso y un cuadrado dulce a elección",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/promo-huma-480.webp",
+    "etiquetas": [
+     "casa"
+    ]
+   },
+   {
+    "id": "avocado-toast",
+    "categoria": "desayunos",
+    "nombre": "Avocado toast",
+    "descripcion": "Pasión de multitudes",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/avocado-toast-480.webp"
+   },
+   {
+    "id": "medialunas",
+    "categoria": "desayunos",
+    "nombre": "Medialunas",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/medialunas-480.webp"
+   },
+   {
+    "id": "croissant",
+    "categoria": "desayunos",
+    "nombre": "Croissant",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/croissant-480.webp"
+   },
+   {
+    "id": "croissant-relleno",
+    "categoria": "desayunos",
+    "nombre": "Croissant relleno",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/croissant-relleno-480.webp"
+   },
+   {
+    "id": "scon-queso",
+    "categoria": "desayunos",
+    "nombre": "Scon de queso",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "toston-crudo",
+    "categoria": "salado",
+    "nombre": "Tostón de crudo",
+    "descripcion": "Masa madre y jamón crudo",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/toston-crudo-480.webp"
+   },
+   {
+    "id": "toston-palta-roquefort",
+    "categoria": "salado",
+    "nombre": "Tostón de palta y roquefort",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/toston-palta-roquefort-480.webp"
+   },
+   {
+    "id": "baguette-crudo",
+    "categoria": "salado",
+    "nombre": "Baguette de crudo",
+    "descripcion": "Jamón crudo y tomates asados",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/baguette-crudo-480.webp",
+    "etiquetas": [
+     "nuevo"
+    ]
+   },
+   {
+    "id": "focaccia-mortadela",
+    "categoria": "salado",
+    "nombre": "Focaccia y mortadela",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/focaccia-mortadela-480.webp",
+    "etiquetas": [
+     "nuevo"
+    ]
+   },
+   {
+    "id": "capresse",
+    "categoria": "salado",
+    "nombre": "Sándwich capresse",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/capresse-480.webp"
+   },
+   {
+    "id": "vegetariano",
+    "categoria": "salado",
+    "nombre": "Sándwich vegetariano",
+    "descripcion": "Queso, palta, rúcula, tomate y mayonesa de apio",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/vegetariano-480.webp",
+    "etiquetas": [
+     "veggie"
+    ]
+   },
+   {
+    "id": "tostado-arabe",
+    "categoria": "salado",
+    "nombre": "Tostado árabe",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/tostado-arabe-480.webp"
+   },
+   {
+    "id": "ensalada-atun",
+    "categoria": "ensaladas",
+    "nombre": "Ensalada de atún",
+    "descripcion": "Palta, cherry, hojas verdes y semillas",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/ensalada-atun-480.webp"
+   },
+   {
+    "id": "rolls",
+    "categoria": "dulces",
+    "nombre": "Roll de canela y almendras",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/rolls-480.webp"
+   },
+   {
+    "id": "red-velvet",
+    "categoria": "dulces",
+    "nombre": "Red velvet",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/red-velvet-480.webp"
+   },
+   {
+    "id": "cheesecake-pistacho",
+    "categoria": "dulces",
+    "nombre": "Cheesecake de pistacho",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/cheesecake-pistacho-480.webp"
+   },
+   {
+    "id": "carrot-cake",
+    "categoria": "dulces",
+    "nombre": "Carrot cake",
+    "descripcion": "De @craquelen",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/carrot-cake-480.webp"
+   },
+   {
+    "id": "alfajor-frambuesa",
+    "categoria": "dulces",
+    "nombre": "Alfajor de dulce de leche y frambuesa",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "keylime",
+    "categoria": "dulces",
+    "nombre": "Key lime",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "cookie",
+    "categoria": "dulces",
+    "nombre": "Cookie",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "cuadrado-dulce",
+    "categoria": "dulces",
+    "nombre": "Cuadrado dulce",
+    "descripcion": "",
+    "precio": null,
+    "disponible": true
+   },
+   {
+    "id": "colombia",
+    "categoria": "grano",
+    "nombre": "Colombia · La Argentina, Huila",
+    "descripcion": "Puerto Blest · 250 g · 1.900 m · lavado · varietal chiroso · flores blancas, miel y durazno",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/colombia-480.webp",
+    "etiquetas": [
+     "tolva"
+    ]
+   },
+   {
+    "id": "peru",
+    "categoria": "grano",
+    "nombre": "Perú · Amazonas",
+    "descripcion": "Puerto Blest · 250 g",
+    "precio": null,
+    "disponible": true,
+    "foto": "img/p/peru-480.webp"
+   }
+  ]
+ }
+}

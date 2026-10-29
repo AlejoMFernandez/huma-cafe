@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Huma café · Café de especialidad en Agronomía</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Huma café">
+<meta property="og:title" content="Huma café · Café de especialidad en Agronomía">
+<meta property="og:description" content="Carta, pedidos para llevar, café en grano de la tolva y catas con cupo. Baigorria 2401.">
+<meta property="og:url" content="https://huma-cafe.vercel.app/">
+<meta property="og:image" content="https://huma-cafe.vercel.app/img/og.jpg?v=1">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Huma café: la esquina más linda de Agronomía">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huma-cafe.vercel.app/img/og.jpg?v=1">
+<meta name="description" content="Huma café, en la esquina de Baigorria 2401 (Agronomía). Café de especialidad que rota en la tolva, desayunos, sándwiches y meriendas. Pedí para llevar, llevate café en grano y sumate a las catas.">
+<meta name="theme-color" content="#F5F1EA">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/archivo-exp.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce) d.classList.add('con-intro');
+  })();
+</script>
+<link rel="stylesheet" href="kit/kit.css?v=1">
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="tinta" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="r"/>
+      <feColorMatrix in="r" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.4 1.55" result="m"/>
+      <feComposite in="SourceGraphic" in2="m" operator="in"/>
+    </filter>
+    <symbol id="h" viewBox="0 0 600 760"><path fill="currentColor" fill-rule="evenodd" d="M0 0H160V292H440V0H600V760H0Z M160 502H440C452 502 462 506 470 512C512 505 548 532 548 580C548 632 512 668 462 664C452 700 432 728 410 742C420 748 432 752 448 760H152C168 752 180 748 190 742C170 716 160 650 160 600Z M478 560C502 556 516 570 516 590C516 612 500 628 474 626C478 604 480 582 478 560Z"/><path fill="currentColor" fill-rule="evenodd" d="M300 34C322 86 356 128 356 182C356 218 330 244 300 244C270 244 244 218 244 182C244 128 278 86 300 34Z M322 160C330 176 332 196 326 214C322 216 318 214 318 210C322 194 322 178 316 164C316 158 320 156 322 160Z"/></symbol>
+    <symbol id="anillo" viewBox="0 0 300 300"><path id="anilloP" d="M150,150 m-114,0 a114,114 0 1,1 228,0 a114,114 0 1,1 -228,0" fill="none"/><text font-family="Jost, sans-serif" font-size="21" font-weight="500" fill="currentColor"><textPath href="#anilloP" textLength="708" lengthAdjust="spacing">HUMA · CAFÉ DE ESPECIALIDAD · HUMA · CAFÉ DE ESPECIALIDAD ·</textPath></text></symbol>
+  </defs>
+</svg>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro__luz luz"></div>
+  <div class="intro__sello sello">
+    <svg class="sello__anillo"><use href="#anillo"/></svg>
+    <svg class="sello__h"><use href="#h"/></svg>
+  </div>
+</div>
+
+<a class="saltar" href="#carta">Ir a la carta</a>
+
+<header class="hdr" id="hdr">
+  <div class="hdr__in">
+    <a class="hdr__logo" href="#inicio" aria-label="Huma café, inicio">
+      <svg class="hdr__h" aria-hidden="true"><use href="#h"/></svg>
+      <span class="hdr__word">HUMA</span>
+    </a>
+    <nav class="hdr__nav" aria-label="Secciones">
+      <a href="#carta">Carta</a><a href="#grano">Café en grano</a><a href="#catas">Catas</a><a href="#esquina">Cómo llegar</a>
+    </nav>
+    <div class="hdr__acc">
+      <button class="btn btn--sm hdr__cart" type="button" data-kit-open="carrito" aria-label="Ver tu pedido para llevar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.3 11.2a2 2 0 0 1-2 1.8H8.3a2 2 0 0 1-2-1.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+        <span>Para llevar</span><b class="hdr__n" data-n hidden>0</b>
+      </button>
+      <a class="btn btn--sm hdr__pedir" href="#carta">Pedir</a>
+      <button class="hdr__menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Menú">
+    <a href="#ahora">Qué pedir ahora</a>
+    <a href="#carta">La carta</a>
+    <a href="#grano">Café en grano</a>
+    <a href="#catas">Catas</a>
+    <a href="#esquina">Cómo llegar</a>
+  </nav>
+  <p class="menu__pie">Baigorria 2401 · Agronomía<br>Todos los días hasta las 20</p>
+</div>
+
+<main>
+
+<section class="hero" id="inicio" aria-label="Huma café">
+  <div class="hero__rayas" aria-hidden="true"></div>
+  <div class="hero__txt">
+    <p class="hero__eyebrow"><span data-estado-corto>Café de especialidad · Agronomía</span></p>
+    <h1 class="hero__t"><span class="lin"><span>Vos elegí</span></span> <span class="lin"><span>qué probar.</span></span></h1>
+    <p class="hero__p">Nosotros te lo preparamos. Desayunos, almuerzos y meriendas en nuestra esquina de Baigorria 2401, o para llevar.</p>
+    <div class="hero__btns">
+      <a class="btn" href="#carta">Ver la carta</a>
+      <a class="btn btn--linea" href="#carta" data-ir-pedir>Pedir para llevar</a>
+    </div>
+    <ul class="hero__datos">
+      <li><b>4,7</b> · 398 reseñas en Google</li>
+      <li><b data-estado-hero>Todos los días</b> · <span data-estado-hero-s>hasta las 20 h</span></li>
+    </ul>
+  </div>
+  <div class="hero__mesa" aria-hidden="false">
+    <div class="luz hero__luz" aria-hidden="true"></div>
+    <figure class="hm hm--a"><img src="img/hero-focaccia-700.webp" srcset="img/hero-focaccia-700.webp 700w, img/hero-focaccia-1100.webp 1100w" sizes="(min-width: 900px) 26vw, 1px" width="1100" height="1375" alt="Sándwich de focaccia y mortadela" decoding="async" id="heroImgDesk"></figure>
+    <figure class="hm hm--b"><img src="img/hero-taza-600.webp" srcset="img/hero-taza-600.webp 600w, img/hero-taza-900.webp 900w" sizes="(min-width: 900px) 24vw, 1px" width="900" height="936" alt="Latte en taza roja con flores" decoding="async"></figure>
+    <figure class="hm hm--c"><img src="img/hero-rolls-600.webp" srcset="img/hero-rolls-600.webp 600w, img/hero-rolls-900.webp 900w" sizes="(min-width: 900px) 21vw, 46vw" width="900" height="1200" alt="Rolls de canela al sol" decoding="async"></figure>
+    <figure class="hm hm--d"><img src="img/hero-latte-640.webp" srcset="img/hero-latte-640.webp 640w, img/hero-latte-874.webp 874w" sizes="(min-width: 900px) 1px, 76vw" width="874" height="874" alt="Latte en la mano, con la remera de Huma" fetchpriority="high" decoding="async" id="heroImg"></figure>
+    <div class="hero__sello sello" aria-hidden="true">
+      <svg class="sello__anillo"><use href="#anillo"/></svg>
+      <svg class="sello__h"><use href="#h"/></svg>
+    </div>
+  </div>
+</section>
+
+<section class="ahora" id="ahora" aria-labelledby="ahoraT">
+  <div class="wrap">
+    <div class="sec-head sec-head--fila rv">
+      <div>
+        <p class="eyebrow">La luz del día</p>
+        <h2 class="h2" id="ahoraT" data-ahora-t>Qué pedir ahora</h2>
+      </div>
+      <p class="sec-head__p" data-ahora-p>La esquina cambia con la luz: desayunos a la mañana, sándwiches al mediodía y meriendas a la tarde.</p>
+    </div>
+  </div>
+  <div class="ahora__fila rv" data-arrastre tabindex="0" aria-label="Momentos del día">
+    <article class="momento" data-momento="manana">
+      <figure class="momento__foto"><img src="img/luz-manana-600.webp" srcset="img/luz-manana-600.webp 600w, img/luz-manana-1000.webp 1000w" sizes="(min-width: 1100px) 30vw, 78vw" width="1000" height="1250" alt="Avocado toast, granola y café en una mesa al sol" loading="lazy" decoding="async"><span class="luz"></span></figure>
+      <div class="momento__txt">
+        <p class="momento__hora">8 a 12 h <span class="momento__ya">Ahora</span></p>
+        <h3>Desayunos</h3>
+        <ul class="momento__lista">
+          <li><span>Promo Huma</span><button type="button" class="mini" data-kit-add="promo-huma" aria-label="Sumar Promo Huma">Sumar</button></li>
+          <li><span>Avocado toast</span><button type="button" class="mini" data-kit-add="avocado-toast" aria-label="Sumar avocado toast">Sumar</button></li>
+          <li><span>Medialunas</span><button type="button" class="mini" data-kit-add="medialunas" aria-label="Sumar medialunas">Sumar</button></li>
+        </ul>
+      </div>
+    </article>
+    <article class="momento" data-momento="mediodia">
+      <figure class="momento__foto"><img src="img/luz-mediodia-600.webp" srcset="img/luz-mediodia-600.webp 600w, img/luz-mediodia-1000.webp 1000w" sizes="(min-width: 1100px) 30vw, 78vw" width="1000" height="1333" alt="Baguette de jamón crudo con un café en taza turquesa" loading="lazy" decoding="async"><span class="luz"></span></figure>
+      <div class="momento__txt">
+        <p class="momento__hora">12 a 16 h <span class="momento__ya">Ahora</span></p>
+        <h3>Almuerzos</h3>
+        <ul class="momento__lista">
+          <li><span>Baguette de crudo</span><button type="button" class="mini" data-kit-add="baguette-crudo" aria-label="Sumar baguette de crudo">Sumar</button></li>
+          <li><span>Focaccia y mortadela</span><button type="button" class="mini" data-kit-add="focaccia-mortadela" aria-label="Sumar focaccia y mortadela">Sumar</button></li>
+          <li><span>Ensalada de atún</span><button type="button" class="mini" data-kit-add="ensalada-atun" aria-label="Sumar ensalada de atún">Sumar</button></li>
+        </ul>
+      </div>
+    </article>
+    <article class="momento" data-momento="tarde">
+      <figure class="momento__foto"><img src="img/luz-tarde-600.webp" srcset="img/luz-tarde-600.webp 600w, img/luz-tarde-1000.webp 1000w" sizes="(min-width: 1100px) 30vw, 78vw" width="1000" height="1280" alt="Merienda al sol: latte, limonada y masas" loading="lazy" decoding="async"><span class="luz"></span></figure>
+      <div class="momento__txt">
+        <p class="momento__hora">16 a 20 h <span class="momento__ya">Ahora</span></p>
+        <h3>Meriendas</h3>
+        <ul class="momento__lista">
+          <li><span>Roll de canela</span><button type="button" class="mini" data-kit-add="rolls" aria-label="Sumar roll de canela">Sumar</button></li>
+          <li><span>Red velvet</span><button type="button" class="mini" data-kit-add="red-velvet" aria-label="Sumar red velvet">Sumar</button></li>
+          <li><span>Flat white</span><button type="button" class="mini" data-kit-add="flat-white" aria-label="Sumar flat white">Sumar</button></li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="carta-sec" id="carta" aria-labelledby="cartaT">
+  <div class="wrap">
+    <div class="carta-sec__head rv">
+      <p class="eyebrow">Para tomar acá o llevar</p>
+      <h2 class="h2" id="cartaT">La carta</h2>
+      <p class="carta-sec__sub">Sumá lo que quieras, elegí cuándo pasás y te lo dejamos listo. En los cafés, <span class="solo-desk">pasá el mouse por la taza</span><span class="solo-celu">tocá la taza</span> y mirá qué lleva adentro.</p>
+    </div>
+    <div class="carta" id="carta-app" aria-busy="true">
+      <div class="carta__tabs" role="tablist" aria-label="Secciones de la carta"></div>
+      <nav class="carta__indice" aria-label="Secciones de la carta"></nav>
+      <div class="carta__panel" id="cartaPanel" role="tabpanel" tabindex="-1"></div>
+      <aside class="carta__foto" aria-hidden="true">
+        <div class="carta__foto-in">
+          <div class="carta__marco"><img alt="" id="cartaFoto" width="800" height="1000"><div class="taza-grande" id="tazaGrande"></div></div>
+          <p class="carta__foto-t" id="cartaFotoT"></p>
+        </div>
+      </aside>
+    </div>
+    <p class="carta-sec__nota">Los precios los confirma el local por WhatsApp antes de prepararlo.</p>
+  </div>
+</section>
+
+<section class="grano" id="grano" aria-labelledby="granoT">
+  <div class="wrap grano__in">
+    <div class="grano__tolva rv">
+      <svg class="tolva" id="tolva" viewBox="0 0 320 460" role="img" aria-label="La tolva con el café de hoy y una bolsa que se llena">
+        <defs>
+          <clipPath id="tolvaClip"><path d="M58 40h204l-74 150h-56z"/></clipPath>
+          <clipPath id="bolsaClip"><path d="M98 322h124l-8 116a12 12 0 0 1-12 11h-84a12 12 0 0 1-12-11z"/></clipPath>
+          <pattern id="granos" width="26" height="22" patternUnits="userSpaceOnUse"><ellipse cx="7" cy="7" rx="6" ry="4.2" fill="#7A5236" transform="rotate(-25 7 7)"/><ellipse cx="19" cy="16" rx="6" ry="4.2" fill="#5E3E28" transform="rotate(30 19 16)"/><path d="M3 9l8-4M15 18l8-3" stroke="#3A2618" stroke-width="1"/></pattern>
+        </defs>
+        <g clip-path="url(#tolvaClip)">
+          <rect x="40" y="76" width="240" height="140" fill="url(#granos)" class="tolva__nivel"/>
+        </g>
+        <path d="M58 40h204l-74 150h-56z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M50 40h220" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+        <rect x="124" y="190" width="72" height="44" rx="6" fill="#20252A" stroke="currentColor" stroke-width="5"/>
+        <rect x="146" y="234" width="28" height="16" fill="currentColor"/>
+        <g class="manivela" id="manivela">
+          <path d="M196 212h44" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M240 212v-40" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="240" cy="166" r="12" fill="#E3CFC0"/>
+        </g>
+        <g class="caida" id="caida">
+          <ellipse cx="156" cy="268" rx="5" ry="3.4" fill="#7A5236"/><ellipse cx="166" cy="286" rx="5" ry="3.4" fill="#5E3E28"/><ellipse cx="158" cy="300" rx="5" ry="3.4" fill="#7A5236"/>
+        </g>
+        <path d="M98 322h124l-8 116a12 12 0 0 1-12 11h-84a12 12 0 0 1-12-11z" fill="#F5F1EA"/>
+        <g clip-path="url(#bolsaClip)"><rect x="90" y="330" width="140" height="130" fill="url(#granos)" class="bolsa__nivel" id="bolsaNivel"/></g>
+        <path d="M92 322h136" stroke="#F5F1EA" stroke-width="8" stroke-linecap="round"/>
+        <rect x="128" y="352" width="64" height="24" rx="12" fill="#F5F1EA"/><text x="160" y="369" text-anchor="middle" class="bolsa__t">250 g</text>
+      </svg>
+      <button type="button" class="tolva__giro" id="manivelaBtn" aria-label="Girar la manivela para moler un cuarto">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>
+        <span>Girá la manivela</span>
+      </button>
+    </div>
+    <div class="grano__txt">
+      <p class="eyebrow rv">Café en grano · en la tolva hoy</p>
+      <h2 class="h2 rv" id="granoT">La tolva <span class="h2__claro">que rota</span></h2>
+      <div class="grano__hoy rv" id="granoHoy" aria-live="polite">
+        <p class="grano__nombre" data-g-nombre>Colombia · La Argentina, Huila</p>
+        <ul class="grano__ficha" data-g-ficha></ul>
+      </div>
+      <div class="grano__elegir rv">
+        <p class="grano__lbl" id="moliendaLbl">¿Cómo lo querés?</p>
+        <div class="chips" role="radiogroup" aria-labelledby="moliendaLbl" id="molienda">
+          <button type="button" role="radio" aria-checked="true" class="chipb is-on" data-mol="En grano">En grano</button>
+          <button type="button" role="radio" aria-checked="false" class="chipb" data-mol="Molido para espresso">Para espresso</button>
+          <button type="button" role="radio" aria-checked="false" class="chipb" data-mol="Molido para filtro">Para filtro</button>
+          <button type="button" role="radio" aria-checked="false" class="chipb" data-mol="Molido para italiana">Para italiana</button>
+        </div>
+        <div class="grano__btns">
+          <button type="button" class="btn btn--crema" id="molerBtn">Moler un cuarto y sumarlo</button>
+          <span class="grano__precio" data-g-precio>250 g · precio a confirmar</span>
+        </div>
+      </div>
+      <div class="grano__antes rv" id="granoAntes" hidden>
+        <p class="grano__lbl">Antes estuvo en la tolva</p>
+        <ul data-g-antes></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="catas" id="catas" aria-labelledby="catasT">
+  <div class="wrap catas__in">
+    <figure class="catas__foto rv"><img src="img/cata-700.webp" srcset="img/cata-700.webp 700w, img/cata-1100.webp 1100w" sizes="(min-width: 1100px) 40vw, 90vw" width="1100" height="1369" alt="Sirviendo vino en una cata en Huma" loading="lazy" decoding="async"></figure>
+    <div class="catas__txt">
+      <p class="eyebrow rv">Eventos con cupo</p>
+      <h2 class="h2 rv" id="catasT">Cata de vinos</h2>
+      <p class="catas__p rv">Una noche en la esquina para descubrir y brindar: cuatro vinos con maridajes y un final con café, de la mano de un sommelier de <a href="https://www.instagram.com/cava_escondida/" target="_blank" rel="noopener">@cava_escondida</a>. Los lugares son pocos: guardá el tuyo acá.</p>
+      <div class="entrada rv" id="entrada">
+        <div class="entrada__top">
+          <div>
+            <p class="entrada__fecha" data-c-fecha>Próxima cata</p>
+            <p class="entrada__hora">20:30 h · Baigorria 2401 · <span data-c-precio>[PRECIO] por persona</span></p>
+          </div>
+          <p class="entrada__quedan" data-c-quedan aria-live="polite">&nbsp;</p>
+        </div>
+        <div class="copas" data-copas aria-hidden="true"></div>
+        <div class="entrada__btns">
+          <button type="button" class="btn btn--rojo" id="cataBtn">Guardame un lugar</button>
+          <span class="entrada__nota" data-c-nota>Se confirma por WhatsApp</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="comunidad" id="comunidad" aria-labelledby="comT">
+  <div class="wrap">
+    <div class="sec-head sec-head--fila rv">
+      <div>
+        <p class="eyebrow">Comunidad Huma</p>
+        <h2 class="h2" id="comT">Flores, libros y café</h2>
+      </div>
+      <p class="sec-head__p">“Todas las cosas que suceden en esta esquina: dulce, salado, bebida fría y caliente, flores y libros.”</p>
+    </div>
+  </div>
+  <div class="mazo" id="mazo" aria-roledescription="mazo de fotos" aria-label="Fotos de Huma. Deslizá para pasar.">
+    <figure class="g g--a"><img src="img/g-011-600.webp" srcset="img/g-011-600.webp 600w, img/g-011-1000.webp 1000w" sizes="(min-width: 1100px) 38vw, 80vw" width="1000" height="667" alt="Una chica lee con un café, flores y una red velvet" loading="lazy" decoding="async"></figure>
+    <figure class="g g--b"><img src="img/g-064-600.webp" srcset="img/g-064-600.webp 600w, img/g-064-1000.webp 720w" sizes="(min-width: 1100px) 22vw, 80vw" width="720" height="1280" alt="Latte en taza turquesa frente a una pila de libros" loading="lazy" decoding="async"></figure>
+    <figure class="g g--c"><img src="img/g-038-600.webp" srcset="img/g-038-600.webp 600w, img/g-038-1000.webp 1000w" sizes="(min-width: 1100px) 26vw, 80vw" width="1000" height="1125" alt="Latte con flores en la mesa" loading="lazy" decoding="async"></figure>
+    <figure class="g g--d"><img src="img/g-025-600.webp" srcset="img/g-025-600.webp 600w, img/g-025-1000.webp 1000w" sizes="(min-width: 1100px) 24vw, 80vw" width="1000" height="1026" alt="Latte en taza roja con margaritas" loading="lazy" decoding="async"></figure>
+    <figure class="g g--e"><img src="img/g-002-600.webp" srcset="img/g-002-600.webp 600w, img/g-002-1000.webp 1000w" sizes="(min-width: 1100px) 30vw, 80vw" width="1000" height="723" alt="Merienda para dos desde arriba" loading="lazy" decoding="async"></figure>
+    <figure class="g g--f"><img src="img/g-055-600.webp" srcset="img/g-055-600.webp 600w, img/g-055-1000.webp 1000w" sizes="(min-width: 1100px) 22vw, 80vw" width="1000" height="1000" alt="Cafés, croissants y tarta sobre madera blanca" loading="lazy" decoding="async"></figure>
+    <figure class="g g--g"><img src="img/g-029-600.webp" srcset="img/g-029-600.webp 600w, img/g-029-1000.webp 1000w" sizes="(min-width: 1100px) 20vw, 80vw" width="1000" height="1778" alt="Jugo de naranja, latte y un tostado con flores" loading="lazy" decoding="async"></figure>
+    <figure class="g g--h"><img src="img/g-027-600.webp" srcset="img/g-027-600.webp 600w, img/g-027-1000.webp 1000w" sizes="(min-width: 1100px) 24vw, 80vw" width="1000" height="1049" alt="Manos sosteniendo un latte al sol" loading="lazy" decoding="async"></figure>
+  </div>
+  <div class="mazo__ctrl wrap">
+    <p class="mazo__hint">Deslizá para pasar las fotos</p>
+    <button class="flecha" type="button" id="mazoSig" aria-label="Siguiente foto"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</section>
+
+<section class="esquina" id="esquina" aria-labelledby="esqT">
+  <div class="wrap esquina__in">
+    <div class="esquina__txt">
+      <p class="eyebrow rv">Visitanos</p>
+      <h2 class="h2 rv" id="esqT">Baigorria 2401</h2>
+      <p class="esquina__p rv">La esquina de Agronomía, en el límite con Villa del Parque. Para quedarte con un libro o pasar a buscar tu café.</p>
+      <div class="horario rv" data-horario>
+        <div class="horario__fila" data-dias="lun,mar,mie,jue,vie"><span>Lunes a viernes</span><b>8 a 20</b></div>
+        <div class="horario__fila" data-dias="sab"><span>Sábados</span><b>9 a 20</b></div>
+        <div class="horario__fila" data-dias="dom"><span>Domingos</span><b>10 a 20</b></div>
+        <p class="horario__estado" data-estado-largo>&nbsp;</p>
+      </div>
+      <div class="esquina__btns rv">
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Huma+caf%C3%A9+Baigorria+2401+Buenos+Aires" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn btn--linea" href="https://wa.me/5491136692192" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn--linea" href="https://www.instagram.com/humacafeagronomia/" target="_blank" rel="noopener">@humacafeagronomia</a>
+      </div>
+      <p class="esquina__google rv"><b>4,7</b> en Google · 398 reseñas</p>
+    </div>
+    <div class="esquina__fotos">
+      <figure class="esquina__f1 rv"><img src="img/esquina-tarde-700.webp" srcset="img/esquina-tarde-700.webp 700w, img/esquina-tarde-1100.webp 1100w" sizes="(min-width: 1100px) 34vw, 90vw" width="1100" height="1374" alt="La esquina de Huma al atardecer, con el cartel encendido" loading="lazy" decoding="async"></figure>
+      <div class="esquina__mapa rv"><iframe title="Mapa: Baigorria 2401, Agronomía" data-src="https://www.google.com/maps?q=Baigorria%202401%2C%20Buenos%20Aires&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="pie">
+  <div class="wrap">
+    <div class="pie__in">
+      <div class="pie__marca">
+        <div class="sello sello--pie" aria-hidden="true"><svg class="sello__anillo"><use href="#anillo"/></svg><svg class="sello__h"><use href="#h"/></svg></div>
+        <p>La esquina más linda de Agronomía.</p>
+      </div>
+      <nav class="pie__nav" aria-label="Pie">
+        <a href="#carta">Carta</a><a href="#grano">Café en grano</a><a href="#catas">Catas</a><a href="#esquina">Cómo llegar</a>
+      </nav>
+      <div class="pie__datos">
+        <p>Baigorria 2401 · Agronomía</p>
+        <p>Lun a vie 8 a 20 · sáb 9 a 20 · dom 10 a 20</p>
+        <p><a href="https://wa.me/5491136692192" target="_blank" rel="noopener">WhatsApp 11 3669-2192</a></p>
+        <p><a href="https://www.instagram.com/humacafeagronomia/" target="_blank" rel="noopener">Instagram @humacafeagronomia</a></p>
+      </div>
+    </div>
+    <a class="pie__makia" href="https://www.instagram.com/makia.cafe/" target="_blank" rel="noopener">
+      <span class="pie__makia-t">Amamos el café</span>
+      <span>Makia × Huma · conocé a @makia.cafe →</span>
+    </a>
+    <p class="pie__credito">Sitio desarrollado por <a href="https://alejomfernandez.com.ar" target="_blank" rel="noopener">Alejo Martín Fernández</a></p>
+  </div>
+</footer>
+
+<script src="js/main.js?v=1" defer></script>
+<script type="module">
+  import { initKit } from './kit/kit.js?v=1';
+  const BOLSA = '<svg viewBox="0 0 24 24"><path d="M5 8h14l-1.3 11.2a2 2 0 0 1-2 1.8H8.3a2 2 0 0 1-2-1.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>';
+  try {
+    const kit = await initKit({ config: 'cliente.json', imagenes: { lqip: 'img/lqip.json' }, carta: {}, carrito: { label: 'Para llevar', icono: BOLSA }, badge: true });
+    window.__kit = kit;
+    document.dispatchEvent(new CustomEvent('hu:kit', { detail: kit }));
+  } catch (err) {
+    console.error('[demo] kit', err);
+    document.dispatchEvent(new CustomEvent('hu:kit-error'));
+  }
+</script>
+</body>
+</html>
