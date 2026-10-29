@@ -425,7 +425,7 @@
     if (!moliendo) { moliendo = true; grano.classList.add('is-moliendo'); }
     clearTimeout(girar.t); girar.t = setTimeout(function () { moliendo = false; grano.classList.remove('is-moliendo'); }, 250);
     setLleno(lleno + Math.abs(grados) / 720);
-    if (lleno >= 1 && !girar.hecho) { girar.hecho = true; sumarBolsa(tolvaP.id); setTimeout(function () { girar.hecho = false; }, 1700); }
+    if (lleno >= .995 && !girar.hecho) { girar.hecho = true; sumarBolsa(tolvaP.id); setTimeout(function () { girar.hecho = false; }, 1700); }
   }
   // botón: anima sola la vuelta
   molerBtn.addEventListener('click', function () {
@@ -435,7 +435,7 @@
     (function paso(t) {
       var k = Math.min(1, (t - t0) / dur), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2, g = e * 720;
       girar(g - prev); prev = g;
-      if (k < 1) requestAnimationFrame(paso); else girar.anim = false;
+      if (k < 1) requestAnimationFrame(paso); else { girar.anim = false; if (!girar.hecho && lleno > .9) girar(720 * (1 - lleno) + 1); }
     })(t0);
   });
   // arrastrar la manivela (dedo o mouse): el ángulo alrededor del eje
