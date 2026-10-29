@@ -36,9 +36,9 @@
     var manana = DIAS[(t.diaN + 1) % 7];
     var abierto = m !== 'noche';
     var corto, largo;
-    if (abierto) { corto = 'Abierto ahora · hasta las 20 h'; largo = 'Abierto ahora · cerramos a las 20'; }
-    else if (t.min < abre * 60 && !param) { corto = 'Abrimos hoy a las ' + abre; largo = corto + ' · hasta las 20'; }
-    else { corto = 'Abrimos mañana a las ' + ABRE[manana]; largo = 'Ya cerramos por hoy · abrimos mañana a las ' + ABRE[manana]; }
+    if (abierto) { corto = 'Abierto ahora · hasta las 20:00hs'; largo = 'Abierto ahora · cerramos a las 20:00hs'; }
+    else if (t.min < abre * 60 && !param) { corto = 'Abrimos hoy a las ' + abre + ':00hs'; largo = corto + ' · hasta las 20:00hs'; }
+    else { corto = 'Abrimos mañana a las ' + ABRE[manana] + ':00hs'; largo = 'Ya cerramos por hoy · abrimos mañana a las ' + ABRE[manana] + ':00hs'; }
     return { t: t, m: m, abierto: abierto, corto: corto, largo: largo };
   }
   var EST = estado();
@@ -46,7 +46,7 @@
     EST = estado();
     var h = $('[data-estado-hero]'), hs = $('[data-estado-hero-s]');
     if (h) h.textContent = EST.abierto ? 'Abierto ahora' : 'Hoy ya cerramos';
-    if (hs) hs.textContent = EST.abierto ? 'hasta las 20 h' : EST.corto.toLowerCase();
+    if (hs) hs.textContent = EST.abierto ? 'hasta las 20:00hs' : EST.corto.toLowerCase();
     var l = $('[data-estado-largo]'); if (l) { l.textContent = EST.largo; l.classList.toggle('is-cerrado', !EST.abierto); }
     $$('.horario__fila').forEach(function (f) { f.classList.toggle('is-hoy', (f.dataset.dias || '').split(',').indexOf(EST.t.dia) >= 0); });
     // la luz de la ventana cambia de ángulo con la hora

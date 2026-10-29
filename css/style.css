@@ -510,7 +510,10 @@ html:not(.js) .hdr { transform: none; }
 .horario__fila { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--linea); font-size: 17px; }
 .horario__fila b { font-weight: 600; }
 .horario__fila.is-hoy { font-weight: 600; }
-.horario__fila.is-hoy span::after { content: " · hoy"; color: var(--turq); }
+.horario__fila b { white-space: nowrap; }
+.horario__fila.is-hoy .dia::after { content: "hoy"; margin-left: 8px; padding: 2px 9px; border-radius: 999px; background: var(--turq); color: var(--blanco); font-size: 13px; vertical-align: 2px; }
+.l-corta { display: none; }
+@media (max-width: 420px) { .l-larga { display: none; } .l-corta { display: inline; } .horario { padding: 8px 18px 14px; } .horario__fila { font-size: 16px; gap: 10px; } }
 .horario__estado { margin: 12px 0 0; font-weight: 600; color: var(--turq); min-height: 1.6em; }
 .horario__estado.is-cerrado { color: var(--roja); }
 .esquina__btns { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -519,16 +522,17 @@ html:not(.js) .hdr { transform: none; }
 .esquina__fotos { display: grid; gap: 16px; min-width: 0; }
 .esquina__f1 { clip-path: var(--ochava); border-radius: 0 22px 22px 22px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--suave); }
 .esquina__f1 img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
-.esquina__mapa { border-radius: 22px; overflow: hidden; background: var(--suave); height: 280px; }
+.esquina__mapa { border-radius: 22px; overflow: hidden; background: var(--suave); height: min(72svh, 440px); clip-path: var(--ochava); }
 .esquina__mapa iframe { width: 100%; height: 100%; border: 0; display: block; filter: grayscale(.6) contrast(1.05); }
 @media (min-width: 768px) and (max-width: 1099px) {
   .platos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@media (min-width: 768px) and (max-width: 899px) { .esquina__fotos { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .esquina__mapa { height: auto; } }
+@media (min-width: 768px) and (max-width: 899px) { .esquina__mapa { height: 480px; } }
 @media (min-width: 900px) {
   .esquina__in { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 72px; align-items: start; }
-  .esquina__fotos { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: end; }
-  .esquina__mapa { height: 380px; }
+  .esquina__in { align-items: stretch; }
+  .esquina__fotos { grid-template-rows: minmax(0, 1fr); }
+  .esquina__mapa { height: 100%; min-height: 600px; }
 }
 
 /* ---------- footer ---------- */
